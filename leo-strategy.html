@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leo — Instagram Strategy Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F2ED;
+  --bg2: #EDEAE3;
+  --bg3: #E4E0D7;
+  --ink: #1A1A1A;
+  --ink2: #5C5850;
+  --ink3: #9C9589;
+  --earth: #8C7355;
+  --earth-light: #C4B99A;
+  --earth-pale: #EDE5D8;
+  --white: #FFFFFF;
+  --border: rgba(26,26,26,0.1);
+  --border2: rgba(26,26,26,0.18);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --tag-reel-bg: #D6EFE6; --tag-reel-fg: #1A5C3A;
+  --tag-foto-bg: #E4E0F5; --tag-foto-fg: #3A3080;
+  --tag-car-bg: #F5E8D0; --tag-car-fg: #6B4A0F;
+  --tag-p1-bg: #D8E8F5; --tag-p1-fg: #0C3D6B;
+  --tag-p2-bg: #D6EFE6; --tag-p2-fg: #1A5C3A;
+  --tag-p3-bg: #F5E8D0; --tag-p3-fg: #6B4A0F;
+  --tag-p4-bg: #F5DDD5; --tag-p4-fg: #6B2010;
+  --tag-p5-bg: #E4E0F5; --tag-p5-fg: #3A3080;
+  --success-bg: #D6EFE6; --success-fg: #1A5C3A; --success-border: #7CC9A5;
+  --danger-bg: #F5DDD5; --danger-fg: #6B2010; --danger-border: #E09080;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Header */
+.site-header {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 48px 40px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  right: -60px; bottom: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  right: 40px; bottom: -120px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.header-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--earth-light);
+  margin-bottom: 10px;
+}
+.header-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.header-title em { color: var(--earth-light); font-style: italic; }
+.header-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  max-width: 480px;
+  line-height: 1.7;
+}
+.header-meta {
+  display: flex;
+  gap: 24px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); }
+.meta-value { font-size: 14px; font-weight: 500; color: var(--earth-light); }
+
+/* Layout */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* Tabs */
+.tab-nav {
+  display: flex;
+  gap: 2px;
+  background: var(--bg2);
+  border-radius: var(--radius);
+  padding: 4px;
+  margin-bottom: 32px;
+}
+.tab-btn {
+  flex: 1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  border: none;
+  background: transparent;
+  color: var(--ink3);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.tab-btn.active {
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.tab-content { display: none; }
+.tab-content.visible { display: block; }
+
+/* Section typography */
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--earth);
+  margin-bottom: 6px;
+}
+.section-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.section-sub {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 580px;
+}
+
+/* Week selector */
+.week-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.wtab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--ink2);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.wtab.active {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+.week-block { display: none; }
+.week-block.visible { display: block; }
+.week-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--earth);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* Post cards */
+.post-card {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: var(--white);
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.12s;
+}
+.post-card:hover { border-color: var(--earth-light); transform: translateY(-1px); }
+.post-day {
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.day-name {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink3);
+}
+.day-format-icon { font-size: 20px; color: var(--ink2); line-height: 1; }
+.day-format-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink3); }
+.post-body { padding: 14px 16px; }
+.post-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 5px; }
+.post-desc { font-size: 12px; color: var(--ink2); line-height: 1.6; }
+.post-tags { display: flex; gap: 5px; margin-top: 9px; flex-wrap: wrap; }
+.tag {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.tag-reel { background: var(--tag-reel-bg); color: var(--tag-reel-fg); }
+.tag-foto { background: var(--tag-foto-bg); color: var(--tag-foto-fg); }
+.tag-car  { background: var(--tag-car-bg);  color: var(--tag-car-fg);  }
+.tag-p1   { background: var(--tag-p1-bg);   color: var(--tag-p1-fg);   }
+.tag-p2   { background: var(--tag-p2-bg);   color: var(--tag-p2-fg);   }
+.tag-p3   { background: var(--tag-p3-bg);   color: var(--tag-p3-fg);   }
+.tag-p4   { background: var(--tag-p4-bg);   color: var(--tag-p4-fg);   }
+.tag-p5   { background: var(--tag-p5-bg);   color: var(--tag-p5-fg);   }
+
+/* Divider */
+.divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+/* Story blocks */
+.story-block {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  background: var(--white);
+}
+.story-type {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--earth);
+  margin-bottom: 4px;
+}
+.story-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+.story-steps { list-style: none; padding: 0; margin-bottom: 10px; }
+.story-steps li {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.6;
+  padding: 3px 0 3px 18px;
+  position: relative;
+}
+.story-steps li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--earth-light);
+  font-size: 11px;
+  top: 5px;
+}
+.voice-example {
+  background: var(--earth-pale);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--earth);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* Rule rows */
+.rule-list { margin-top: 4px; }
+.rule-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.rule-row:last-child { border-bottom: none; }
+.rule-icon { font-size: 18px; color: var(--earth); flex-shrink: 0; line-height: 1.4; }
+.rule-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.rule-desc { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+
+/* Brand section */
+.swatch-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.swatch-wrap { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.swatch { width: 48px; height: 48px; border-radius: var(--radius-sm); border: 1px solid rgba(0,0,0,0.08); }
+.swatch-hex { font-size: 10px; color: var(--ink3); font-family: monospace; }
+.swatch-name { font-size: 10px; color: var(--ink3); }
+
+.font-demo-big {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 12px 0 4px;
+}
+.font-demo-body { font-size: 14px; color: var(--ink2); line-height: 1.7; }
+
+.ratio-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.ratio-box {
+  flex: 1;
+  min-width: 80px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.ratio-visual { background: var(--bg2); border-radius: 4px; }
+.ratio-label { font-size: 13px; font-weight: 500; color: var(--ink); }
+.ratio-sub { font-size: 11px; color: var(--ink3); text-align: center; }
+
+.photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 12px; }
+.photo-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+.photo-card-icon { font-size: 20px; color: var(--earth); margin-bottom: 8px; }
+.photo-card-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+.photo-card-desc { font-size: 12px; color: var(--ink2); line-height: 1.55; }
+
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.do-box {
+  border: 1px solid var(--success-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  background: var(--success-bg);
+}
+.dont-box {
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  background: var(--danger-bg);
+}
+.do-title { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--success-fg); margin-bottom: 10px; }
+.dont-title { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--danger-fg); margin-bottom: 10px; }
+.do-box li, .dont-box li {
+  font-size: 12px;
+  color: var(--ink2);
+  margin-left: 16px;
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+/* Narrative box */
+.narrative-box {
+  background: var(--ink);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+}
+.narrative-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.narrative-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
+
+/* Pillar legend */
+.pillar-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--ink2); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Gold rules box */
+.gold-rules {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px 20px;
+  margin-top: 24px;
+}
+
+/* Tone pills */
+.tone-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tone-pill {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--bg2);
+  color: var(--ink2);
+  border: 1px solid var(--border);
+}
+
+/* Bio box */
+.bio-box {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 16px 18px;
+  font-size: 14px;
+  line-height: 2;
+  font-family: monospace;
+  margin-top: 10px;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 24px 40px;
+  text-align: center;
+}
+.footer-text { font-size: 12px; color: var(--ink3); }
+
+/* Responsive */
+@media (max-width: 600px) {
+  .site-header { padding: 32px 20px 28px; }
+  .container { padding: 24px 16px 60px; }
+  .tab-btn { font-size: 12px; padding: 8px 10px; }
+  .do-dont { grid-template-columns: 1fr; }
+  .ratio-row { gap: 6px; }
+  .header-meta { gap: 16px; }
+  .post-card { grid-template-columns: 64px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-label">Instagram Strategy Guide</div>
+  <h1 class="header-title">Leo — <em>De Aguascalientes<br>al mundo</em></h1>
+  <p class="header-sub">Guía maestra de contenido para Instagram. Calendario · Manual de stories · Brandbook.</p>
+  <div class="header-meta">
+    <div class="meta-item">
+      <span class="meta-label">Posts / semana</span>
+      <span class="meta-value">3</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Idioma</span>
+      <span class="meta-value">Bilingüe</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Estética</span>
+      <span class="meta-value">Limpia · Minimalista</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Horizonte</span>
+      <span class="meta-value">4 semanas</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="narrative-box">
+    <div class="narrative-quote">"Un inmigrante mexicano que construyó una vida de servicio, liderazgo, aventura y crecimiento constante, sin perder sus raíces, su amor por la gente, su curiosidad por el mundo y su deseo de seguir evolucionando."</div>
+    <div class="narrative-label">Narrativa central · Todo el contenido vive dentro de esta frase</div>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('calendario', this)">Calendario</button>
+    <button class="tab-btn" onclick="showTab('stories', this)">Manual de stories</button>
+    <button class="tab-btn" onclick="showTab('brand', this)">Brandbook</button>
+  </div>
+
+  <!-- CALENDARIO -->
+  <div id="tab-calendario" class="tab-content visible">
+    <div class="section-eyebrow">Lun · Reel &nbsp;|&nbsp; Mié · Estático &nbsp;|&nbsp; Vie · Carrusel</div>
+    <h2 class="section-heading">Calendario 4 semanas</h2>
+    <p class="section-sub">3 posts por semana, ritmo sostenible. Las stories van aparte — ver pestaña de manual.</p>
+
+    <div class="pillar-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#378ADD"></div>Servicio & liderazgo</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1D9E75"></div>Aventura & cultura</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#BA7517"></div>Crecimiento & disciplina</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#D85A30"></div>Raíces & identidad</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7F77DD"></div>Reflexión & propósito</div>
+    </div>
+
+    <div class="week-tabs">
+      <button class="wtab active" onclick="showWeek(1, this)">Semana 1</button>
+      <button class="wtab" onclick="showWeek(2, this)">Semana 2</button>
+      <button class="wtab" onclick="showWeek(3, this)">Semana 3</button>
+      <button class="wtab" onclick="showWeek(4, this)">Semana 4</button>
+    </div>
+
+    <div id="w1" class="week-block visible">
+      <div class="week-eyebrow">Semana 1 · El origen — ¿quién es Leo?</div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Lun</div>
+          <div class="day-format-icon">▶</div>
+          <div class="day-format-label">Reel</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"De Aguascalientes al mundo"</div>
+          <div class="post-desc">Voz en off sobre B-roll de archivo: México, uniforme, viajes. Gancho: <em>"Llegué a este país con 7 años. Nadie me dijo que terminaría representándolo."</em> No un CV — una historia.</div>
+          <div class="post-tags"><span class="tag tag-reel">Reel</span><span class="tag tag-p4">Raíces</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Mié</div>
+          <div class="day-format-icon">◼</div>
+          <div class="day-format-label">Estático</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"El restaurante fue mi primera escuela de liderazgo"</div>
+          <div class="post-desc">Foto de comida mexicana o momento familiar. Caption corto, emocional. La historia del restaurante como origen de la disciplina y el servicio.</div>
+          <div class="post-tags"><span class="tag tag-foto">Estático</span><span class="tag tag-p1">Servicio</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Vie</div>
+          <div class="day-format-icon">⊞</div>
+          <div class="day-format-label">Carrusel</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"Las 3 identidades que me definen"</div>
+          <div class="post-desc">Mexicano / Soldado / Ciudadano del mundo. Un slide por identidad, sin texto largo. Slide final: <em>"¿Y tú cómo te defines?"</em> para activar comentarios.</div>
+          <div class="post-tags"><span class="tag tag-car">Carrusel</span><span class="tag tag-p4">Raíces</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="w2" class="week-block">
+      <div class="week-eyebrow">Semana 2 · El recorrido — decisiones que formaron a Leo</div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Lun</div>
+          <div class="day-format-icon">▶</div>
+          <div class="day-format-label">Reel</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"Lo que el Ejército me enseñó que ninguna maestría pudo"</div>
+          <div class="post-desc">B-roll de entrenamiento o uniforme. Voz en off con 3 lecciones reales y específicas — nada de motivación genérica. Que se sienta que vivió eso.</div>
+          <div class="post-tags"><span class="tag tag-reel">Reel</span><span class="tag tag-p1">Servicio</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Mié</div>
+          <div class="day-format-icon">◼</div>
+          <div class="day-format-label">Estático</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"Trabajé en una embajada. Esto es lo que nadie imagina."</div>
+          <div class="post-desc">Foto de Paraguay o momento diplomático. Caption desmitificando lo que es ser Bilateral Affairs Officer. Real, sin grandilocuencia.</div>
+          <div class="post-tags"><span class="tag tag-foto">Estático</span><span class="tag tag-p2">Aventura</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Vie</div>
+          <div class="day-format-icon">⊞</div>
+          <div class="day-format-label">Carrusel</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"Kosovo: lo que nadie te cuenta"</div>
+          <div class="post-desc">Historia honesta del despliegue. No heroísmo de película. La gente local, el frío, lo que le cambió. Empieza con un dato o momento inesperado. Máx 6 slides.</div>
+          <div class="post-tags"><span class="tag tag-car">Carrusel</span><span class="tag tag-p2">Aventura</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="w3" class="week-block">
+      <div class="week-eyebrow">Semana 3 · El presente — disciplina, evolución y propósito</div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Lun</div>
+          <div class="day-format-icon">▶</div>
+          <div class="day-format-label">Reel</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"Por qué empecé de cero en ciberseguridad"</div>
+          <div class="post-desc">B-roll de laptop, ciudad, campus. Voz en off honesta sobre el miedo a la transición y la lógica detrás. El paralelo con adaptarse en el Ejército.</div>
+          <div class="post-tags"><span class="tag tag-reel">Reel</span><span class="tag tag-p3">Crecimiento</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Mié</div>
+          <div class="day-format-icon">◼</div>
+          <div class="day-format-label">Estático</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"5am. El mundo duerme. Yo prefiero así."</div>
+          <div class="post-desc">Foto real del gym o entrenamiento, sin posing. Caption corto sobre por qué entrena temprano — no motivación de influencer, sino filosofía personal.</div>
+          <div class="post-tags"><span class="tag tag-foto">Estático</span><span class="tag tag-p3">Crecimiento</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Vie</div>
+          <div class="day-format-icon">⊞</div>
+          <div class="day-format-label">Carrusel</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"5 cosas que aprendí viviendo entre dos culturas"</div>
+          <div class="post-desc">México + USA desde los 7 años. Lecciones reales, algunas incómodas. El bilingüismo como superpoder y como lucha. Termina con pregunta a la audiencia.</div>
+          <div class="post-tags"><span class="tag tag-car">Carrusel</span><span class="tag tag-p4">Raíces</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="w4" class="week-block">
+      <div class="week-eyebrow">Semana 4 · La gente — vínculos, gratitud y hacia dónde va</div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Lun</div>
+          <div class="day-format-icon">▶</div>
+          <div class="day-format-label">Reel</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"Lo que aprendí de mis padres que ningún grado pudo"</div>
+          <div class="post-desc">El más emocional del mes. B-roll de lugares de infancia o fotos de familia. Voz en off. Honra a sus padres sin sentimentalismo forzado. Muy poderoso si es auténtico.</div>
+          <div class="post-tags"><span class="tag tag-reel">Reel</span><span class="tag tag-p4">Raíces</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Mié</div>
+          <div class="day-format-icon">◼</div>
+          <div class="day-format-label">Estático</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"Hay lugares que te recuerdan quién eres"</div>
+          <div class="post-desc">Foto de paisaje, caminata o atardecer. Caption reflexivo pero sin caer en cita motivacional. Un pensamiento real que tuvo en ese lugar. Breve y auténtico.</div>
+          <div class="post-tags"><span class="tag tag-foto">Estático</span><span class="tag tag-p5">Reflexión</span></div>
+        </div>
+      </div>
+      <div class="post-card">
+        <div class="post-day">
+          <div class="day-name">Vie</div>
+          <div class="day-format-icon">⊞</div>
+          <div class="day-format-label">Carrusel</div>
+        </div>
+        <div class="post-body">
+          <div class="post-title">"4 países, 4 lecciones que cambiaron todo"</div>
+          <div class="post-desc">México · Kosovo · Paraguay · USA. Una lección personal y honesta de cada uno. No turística. Cierre: <em>"¿Qué lugar te cambió a ti?"</em></div>
+          <div class="post-tags"><span class="tag tag-car">Carrusel</span><span class="tag tag-p2">Aventura</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STORIES -->
+  <div id="tab-stories" class="tab-content">
+    <div class="section-eyebrow">Para que Leo las haga solo</div>
+    <h2 class="section-heading">Manual de stories</h2>
+    <p class="section-sub">Las stories no tienen que ser perfectas — tienen que ser reales. 3 a 5 por semana, sin calendario fijo. Estas son las plantillas mentales que puede usar cualquier día.</p>
+
+    <div class="story-block">
+      <div class="story-type">Tipo 1 · Cotidiano</div>
+      <div class="story-title">El momento del día</div>
+      <ul class="story-steps">
+        <li>Una foto o video de lo que está haciendo: gym, café, vista desde la ventana, comida</li>
+        <li>Sin texto elaborado — una frase corta o ninguna, que la imagen hable</li>
+        <li>Puede ser en español, inglés o los dos</li>
+        <li>Frecuencia ideal: 2–3 veces por semana</li>
+      </ul>
+      <div class="voice-example">"5:47am. No hay excusas." &nbsp;·&nbsp; "This view never gets old." &nbsp;·&nbsp; "Domingo = reset."</div>
+    </div>
+
+    <div class="story-block">
+      <div class="story-type">Tipo 2 · Reflexión rápida</div>
+      <div class="story-title">El pensamiento de la semana</div>
+      <ul class="story-steps">
+        <li>Texto sobre fondo simple — negro o crema, sin stickers decorativos</li>
+        <li>Una sola idea, máximo 2 líneas</li>
+        <li>No tiene que ser profundo, solo honesto</li>
+        <li>Puede cerrar con pregunta o dejarlo abierto</li>
+      </ul>
+      <div class="voice-example">"El mejor liderazgo que he visto fue el de mi mamá abriendo un restaurante sin hablar inglés." &nbsp;·&nbsp; "Discipline isn't punishment. It's love for your future self."</div>
+    </div>
+
+    <div class="story-block">
+      <div class="story-type">Tipo 3 · Interacción</div>
+      <div class="story-title">La pregunta de la semana</div>
+      <ul class="story-steps">
+        <li>Una pregunta con caja de respuestas abierta o poll de dos opciones</li>
+        <li>La pregunta tiene que ser algo que Leo también se haría a sí mismo</li>
+        <li>Repostear 1–2 respuestas que resuenen para generar comunidad</li>
+        <li>Frecuencia: 1 vez por semana máximo</li>
+      </ul>
+      <div class="voice-example">"¿Alguna vez tomaron una decisión que nadie entendió pero que sabían era la correcta?" &nbsp;·&nbsp; "Two cultures, one identity — or two?"</div>
+    </div>
+
+    <div class="story-block">
+      <div class="story-type">Tipo 4 · Behind the content</div>
+      <div class="story-title">El making-of</div>
+      <ul class="story-steps">
+        <li>Cuando sube un post, compartirlo en story con contexto extra que no cupó en el caption</li>
+        <li>"El post de hoy es sobre esto — lo que no dije fue..."</li>
+        <li>Genera profundidad sin más trabajo de producción</li>
+        <li>Duración: 1 sola story, no más</li>
+      </ul>
+      <div class="voice-example">"Subí esta foto de Kosovo. Lo que no puse en el caption es que ese día fue el más difícil de mi vida."</div>
+    </div>
+
+    <div class="story-block">
+      <div class="story-type">Tipo 5 · Viajes y comida</div>
+      <div class="story-title">El foodie que viaja</div>
+      <ul class="story-steps">
+        <li>Foto de comida en contexto real — no posada, no perfecta</li>
+        <li>Nombrar el lugar, el plato y una sola línea de por qué importa</li>
+        <li>Si es viaje: una story de llegada + una del momento favorito del día</li>
+        <li>No hace falta que sea destino exótico — un taco en Boston también cuenta</li>
+      </ul>
+      <div class="voice-example">"Chipá en Asunción a las 7am. Nada que agregar." &nbsp;·&nbsp; "Found the best birria in Boston. Don't tell Mexico."</div>
+    </div>
+
+    <hr class="divider">
+    <div class="section-eyebrow">Reglas de oro para Leo</div>
+
+    <div class="gold-rules">
+      <div class="rule-row">
+        <div class="rule-icon">⏱</div>
+        <div>
+          <div class="rule-title">Máximo 5 stories por sesión</div>
+          <div class="rule-desc">Si tiene más material, guardar para otro día. El exceso aburre y hace que la gente salte sin ver.</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">Aa</div>
+        <div>
+          <div class="rule-title">Fuente grande, texto corto</div>
+          <div class="rule-desc">Si el texto necesita más de 8 palabras para leerse bien, es demasiado. Cortar.</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">✦</div>
+        <div>
+          <div class="rule-title">Cero stickers decorativos</div>
+          <div class="rule-desc">Nada de GIFs de "check this out", arcoíris ni confeti. Solo texto limpio, encuestas funcionales o nada.</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">○</div>
+        <div>
+          <div class="rule-title">Si dudas, no publiques</div>
+          <div class="rule-desc">Mejor no subir nada que subir algo que no se siente auténtico. El silencio no daña el perfil, el contenido forzado sí.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRANDBOOK -->
+  <div id="tab-brand" class="tab-content">
+    <div class="section-eyebrow">Look & feel de Leo</div>
+    <h2 class="section-heading">Mini brandbook</h2>
+    <p class="section-sub">Limpio, minimalista, con calidez. No busca impresionar — busca que te identifiques.</p>
+
+    <div class="section-eyebrow">Bio de Instagram</div>
+    <div class="bio-box">
+      🇲🇽 De Aguascalientes al mundo<br>
+      🎖️ Oficial del Ejército US · Diplomático<br>
+      🌍 Viajes · Fitness · Comida · Propósito<br>
+      📍 Boston, MA
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-eyebrow">Paleta de color</div>
+    <div class="swatch-row">
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#1A1A1A;"></div>
+        <div class="swatch-hex">#1A1A1A</div>
+        <div class="swatch-name">Principal</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#F5F2ED;"></div>
+        <div class="swatch-hex">#F5F2ED</div>
+        <div class="swatch-name">Fondo</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#8C7355;"></div>
+        <div class="swatch-hex">#8C7355</div>
+        <div class="swatch-name">Tierra</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#C4B99A;"></div>
+        <div class="swatch-hex">#C4B99A</div>
+        <div class="swatch-name">Tierra suave</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#FFFFFF; border:1px solid #ddd;"></div>
+        <div class="swatch-hex">#FFFFFF</div>
+        <div class="swatch-name">Blanco</div>
+      </div>
+    </div>
+    <p class="rule-desc" style="margin-top:12px;">Negro profundo como base. Crema cálida como fondo — nunca blanco frío. Tierra como acento: conecta con México, la naturaleza, la autenticidad. Nunca colores saturados ni neón.</p>
+
+    <hr class="divider">
+
+    <div class="section-eyebrow">Tipografía</div>
+    <div class="font-demo-big">Built on purpose.</div>
+    <p class="font-demo-body">Display: <strong>DM Serif Display</strong> — para títulos en carruseles y gráficos. Cuerpo: <strong>DM Sans</strong> — para texto en slides y stories de texto. Pesos: Regular (400) para cuerpo, Medium (500) para destacar. Ambas son libres y gratuitas en Google Fonts.</p>
+
+    <hr class="divider">
+
+    <div class="section-eyebrow">Proporciones y formatos</div>
+    <div class="ratio-row">
+      <div class="ratio-box">
+        <div class="ratio-visual" style="width:36px;height:64px;"></div>
+        <div class="ratio-label">9:16</div>
+        <div class="ratio-sub">Reels<br>Stories</div>
+      </div>
+      <div class="ratio-box">
+        <div class="ratio-visual" style="width:48px;height:48px;"></div>
+        <div class="ratio-label">1:1</div>
+        <div class="ratio-sub">Fotos<br>estáticas</div>
+      </div>
+      <div class="ratio-box">
+        <div class="ratio-visual" style="width:44px;height:55px;"></div>
+        <div class="ratio-label">4:5</div>
+        <div class="ratio-sub">Slides de<br>carruseles</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-eyebrow">Estilo fotográfico</div>
+    <div class="photo-grid">
+      <div class="photo-card">
+        <div class="photo-card-icon">☀</div>
+        <div class="photo-card-title">Luz natural siempre</div>
+        <div class="photo-card-desc">Luz de ventana, amanecer, atardecer. Nunca flash directo. Si la foto necesita flash para verse bien, no es la foto correcta.</div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-card-icon">◑</div>
+        <div class="photo-card-title">Edición discreta</div>
+        <div class="photo-card-desc">+10 exposición, −10 brillos, +5 sombras, +10 calidez. Si se usa filtro: el mismo en todos los posts para coherencia visual.</div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-card-icon">□</div>
+        <div class="photo-card-title">Composición limpia</div>
+        <div class="photo-card-desc">Fondo simple o desenfocado. Espacio negativo. Un sujeto principal por foto. Si hay duda entre dos fotos, elegir la más simple.</div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-card-icon">◎</div>
+        <div class="photo-card-title">Real sobre perfecto</div>
+        <div class="photo-card-desc">Una foto ligeramente imperfecta pero genuina supera a una perfecta pero posada. Este perfil no es un catálogo.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-eyebrow">Tono de voz</div>
+    <div class="tone-pills">
+      <span class="tone-pill">Bilingüe con naturalidad</span>
+      <span class="tone-pill">Sin postureo</span>
+      <span class="tone-pill">Directo pero con profundidad</span>
+      <span class="tone-pill">Reflexivo sin sermonear</span>
+      <span class="tone-pill">Captions cortos en estáticos</span>
+      <span class="tone-pill">5–8 hashtags al final</span>
+    </div>
+    <div class="rule-list" style="margin-top:16px;">
+      <div class="rule-row">
+        <div class="rule-icon">→</div>
+        <div>
+          <div class="rule-title">Bilingüe con naturalidad</div>
+          <div class="rule-desc">No traducir todo, no forzar el switch. Si un pensamiento nació en español, escribirlo en español. La mezcla es parte de la identidad de Leo.</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">→</div>
+        <div>
+          <div class="rule-title">Captions: cortos en estáticos, más largos en carruseles</div>
+          <div class="rule-desc">Foto estática: 3–5 líneas máximo. Carrusel: puede ser más largo porque ya vieron el contenido. Reel: 1–2 líneas, el video habla.</div>
+        </div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">→</div>
+        <div>
+          <div class="rule-title">Hashtags: 5–8, siempre al final o en primer comentario</div>
+          <div class="rule-desc">Mezcla de nicho (#militaryleadership #immigrantstory #latinosinuniform) y general (#leadership #travel). Nunca en el cuerpo del caption.</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-eyebrow">Lo que es Leo · Lo que no es</div>
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-title">✓ &nbsp;Sí es Leo</div>
+        <ul>
+          <li>Honesto sobre sus dudas y transiciones</li>
+          <li>Orgulloso de México sin performatividad</li>
+          <li>Disciplinado sin sermonear</li>
+          <li>Curioso por el mundo y la gente</li>
+          <li>Cálido, leal, con sentido del humor</li>
+          <li>Foodie que conecta comida con cultura</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="dont-title">✗ &nbsp;No es Leo</div>
+        <ul>
+          <li>Guru de productividad o motivación</li>
+          <li>Militarismo duro o postureo patriótico</li>
+          <li>Lujo por el lujo: hoteles, relojes, marcas</li>
+          <li>Viajes sin alma ni historia detrás</li>
+          <li>Respuestas perfectas, vida perfecta</li>
+          <li>Contenido de trends que no le pertenece</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p class="footer-text">Leo — Instagram Strategy Guide &nbsp;·&nbsp; Lun · Reel &nbsp;|&nbsp; Mié · Estático &nbsp;|&nbsp; Vie · Carrusel &nbsp;|&nbsp; Stories: libre</p>
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('visible');
+  btn.classList.add('active');
+}
+function showWeek(n, btn) {
+  document.querySelectorAll('.week-block').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.wtab').forEach(el => el.classList.remove('active'));
+  document.getElementById('w' + n).classList.add('visible');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
