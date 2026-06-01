@@ -6,39 +6,39 @@
 <title>Leo — Instagram Strategy Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #F5F2ED;
-  --bg2: #EDEAE3;
-  --bg3: #E4E0D7;
-  --ink: #1A1A1A;
-  --ink2: #5C5850;
-  --ink3: #9C9589;
-  --earth: #8C7355;
-  --earth-light: #C4B99A;
-  --earth-pale: #EDE5D8;
-  --white: #FFFFFF;
-  --border: rgba(26,26,26,0.1);
-  --border2: rgba(26,26,26,0.18);
-  --radius: 12px;
-  --radius-sm: 8px;
-  --tag-reel-bg: #D6EFE6; --tag-reel-fg: #1A5C3A;
-  --tag-foto-bg: #E4E0F5; --tag-foto-fg: #3A3080;
-  --tag-car-bg: #F5E8D0; --tag-car-fg: #6B4A0F;
-  --tag-p1-bg: #D8E8F5; --tag-p1-fg: #0C3D6B;
-  --tag-p2-bg: #D6EFE6; --tag-p2-fg: #1A5C3A;
-  --tag-p3-bg: #F5E8D0; --tag-p3-fg: #6B4A0F;
-  --tag-p4-bg: #F5DDD5; --tag-p4-fg: #6B2010;
-  --tag-p5-bg: #E4E0F5; --tag-p5-fg: #3A3080;
-  --success-bg: #D6EFE6; --success-fg: #1A5C3A; --success-border: #7CC9A5;
-  --danger-bg: #F5DDD5; --danger-fg: #6B2010; --danger-border: #E09080;
+  --bg: #161616;
+  --bg2: #1E1E1E;
+  --bg3: #252525;
+  --ink: #E8E4DC;
+  --ink2: #9A9488;
+  --ink3: #5C5852;
+  --earth: #A67C2D;
+  --earth-light: #B89B6A;
+  --earth-pale: #2A2318;
+  --white: #242424;
+  --border: rgba(232,228,220,0.08);
+  --border2: rgba(232,228,220,0.15);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --tag-reel-bg: #1A2E20; --tag-reel-fg: #6AAF84;
+  --tag-foto-bg: #1E1E2E; --tag-foto-fg: #8880C0;
+  --tag-car-bg: #2A2010; --tag-car-fg: #B89B6A;
+  --tag-p1-bg: #182030; --tag-p1-fg: #6090C0;
+  --tag-p2-bg: #1A2E20; --tag-p2-fg: #6AAF84;
+  --tag-p3-bg: #2A2010; --tag-p3-fg: #B89B6A;
+  --tag-p4-bg: #2A1810; --tag-p4-fg: #B06848;
+  --tag-p5-bg: #1E1828; --tag-p5-fg: #8880C0;
+  --success-bg: #182818; --success-fg: #6AAF84; --success-border: #2A4A2A;
+  --danger-bg:  #281818; --danger-fg:  #B06848; --danger-border: #4A2A2A;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.6;
@@ -47,64 +47,65 @@ body {
 
 /* Header */
 .site-header {
-  background: var(--ink);
-  color: var(--bg);
-  padding: 48px 40px 40px;
+  background: #111111;
+  padding: 44px 40px 40px;
   position: relative;
   overflow: hidden;
-}
-.site-header::after {
-  content: '';
-  position: absolute;
-  right: -60px; bottom: -80px;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.07);
+  border-top: 4px solid #A67C2D;
 }
 .site-header::before {
   content: '';
   position: absolute;
-  right: 40px; bottom: -120px;
-  width: 200px; height: 200px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.05);
+  right: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: #A67C2D;
+  opacity: 0.3;
 }
 .header-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--earth-light);
-  margin-bottom: 10px;
+  color: #A67C2D;
+  margin-bottom: 14px;
 }
 .header-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--white);
-  margin-bottom: 12px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(48px, 8vw, 72px);
+  font-weight: 800;
+  line-height: 0.92;
+  color: #F5F2ED;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0;
 }
-.header-title em { color: var(--earth-light); font-style: italic; }
+.header-title em {
+  display: block;
+  color: #A67C2D;
+  font-style: normal;
+  font-size: clamp(32px, 5.5vw, 50px);
+}
 .header-sub {
-  font-size: 15px;
-  color: rgba(255,255,255,0.55);
-  max-width: 480px;
-  line-height: 1.7;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(245,242,237,0.35);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 20px;
 }
 .header-meta {
   display: flex;
-  gap: 24px;
+  gap: 28px;
   margin-top: 28px;
   flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid rgba(245,242,237,0.08);
 }
-.meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.35); }
-.meta-value { font-size: 14px; font-weight: 500; color: var(--earth-light); }
+.meta-item { display: flex; flex-direction: column; gap: 3px; }
+.meta-label { font-family: 'Montserrat', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(245,242,237,0.3); font-weight: 600; }
+.meta-value { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600; color: #A67C2D; }
 
 /* Layout */
 .container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
@@ -135,7 +136,8 @@ body {
 .tab-btn.active {
   background: var(--white);
   color: var(--ink);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+  border: none;
 }
 .tab-content { display: none; }
 .tab-content.visible { display: block; }
@@ -184,9 +186,9 @@ body {
   transition: all 0.15s;
 }
 .wtab.active {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  background: #5A4632;
+  color: #F5F2ED;
+  border-color: #5A4632;
 }
 .week-block { display: none; }
 .week-block.visible { display: block; }
@@ -211,7 +213,7 @@ body {
   cursor: pointer;
   transition: border-color 0.15s, transform 0.12s;
 }
-.post-card:hover { border-color: var(--earth-light); transform: translateY(-1px); }
+.post-card:hover { border-color: var(--earth); transform: translateY(-1px); }
 .post-day {
   background: var(--bg);
   border-right: 1px solid var(--border);
@@ -380,8 +382,7 @@ body {
 
 /* Narrative box */
 .narrative-box {
-  background: var(--ink);
-  color: var(--white);
+  background: #5A4632;
   border-radius: var(--radius);
   padding: 24px 28px;
   margin-bottom: 28px;
@@ -391,11 +392,11 @@ body {
   font-size: 18px;
   font-weight: 400;
   font-style: italic;
-  color: var(--white);
+  color: #B89B6A;
   line-height: 1.5;
   margin-bottom: 10px;
 }
-.narrative-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
+.narrative-label { font-size: 11px; color: rgba(245,242,237,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
 
 /* Pillar legend */
 .pillar-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
@@ -410,7 +411,6 @@ body {
   padding: 4px 20px;
   margin-top: 24px;
 }
-
 /* Tone pills */
 .tone-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .tone-pill {
@@ -424,8 +424,8 @@ body {
 
 /* Bio box */
 .bio-box {
-  background: var(--ink);
-  color: var(--bg);
+  background: #5A4632;
+  color: #B89B6A;
   border-radius: var(--radius-sm);
   padding: 16px 18px;
   font-size: 14px;
@@ -796,32 +796,37 @@ body {
     <div class="section-eyebrow">Paleta de color</div>
     <div class="swatch-row">
       <div class="swatch-wrap">
-        <div class="swatch" style="background:#1A1A1A;"></div>
-        <div class="swatch-hex">#1A1A1A</div>
-        <div class="swatch-name">Principal</div>
+        <div class="swatch" style="background:#111111;border:1px solid #333;"></div>
+        <div class="swatch-hex">#111111</div>
+        <div class="swatch-name">Matte black</div>
       </div>
       <div class="swatch-wrap">
-        <div class="swatch" style="background:#F5F2ED;"></div>
-        <div class="swatch-hex">#F5F2ED</div>
-        <div class="swatch-name">Fondo</div>
+        <div class="swatch" style="background:#1F3A2A;"></div>
+        <div class="swatch-hex">#1F3A2A</div>
+        <div class="swatch-name">Deep jungle</div>
       </div>
       <div class="swatch-wrap">
-        <div class="swatch" style="background:#8C7355;"></div>
-        <div class="swatch-hex">#8C7355</div>
-        <div class="swatch-name">Tierra</div>
+        <div class="swatch" style="background:#556B2F;"></div>
+        <div class="swatch-hex">#556B2F</div>
+        <div class="swatch-name">Olive drab</div>
       </div>
       <div class="swatch-wrap">
-        <div class="swatch" style="background:#C4B99A;"></div>
-        <div class="swatch-hex">#C4B99A</div>
-        <div class="swatch-name">Tierra suave</div>
+        <div class="swatch" style="background:#5A4632;"></div>
+        <div class="swatch-hex">#5A4632</div>
+        <div class="swatch-name">Earth brown</div>
       </div>
       <div class="swatch-wrap">
-        <div class="swatch" style="background:#FFFFFF; border:1px solid #ddd;"></div>
-        <div class="swatch-hex">#FFFFFF</div>
-        <div class="swatch-name">Blanco</div>
+        <div class="swatch" style="background:#B89B6A;"></div>
+        <div class="swatch-hex">#B89B6A</div>
+        <div class="swatch-name">Desert sand</div>
+      </div>
+      <div class="swatch-wrap">
+        <div class="swatch" style="background:#A67C2D;"></div>
+        <div class="swatch-hex">#A67C2D</div>
+        <div class="swatch-name">Muted gold</div>
       </div>
     </div>
-    <p class="rule-desc" style="margin-top:12px;">Negro profundo como base. Crema cálida como fondo — nunca blanco frío. Tierra como acento: conecta con México, la naturaleza, la autenticidad. Nunca colores saturados ni neón.</p>
+    <p class="rule-desc" style="margin-top:12px;">80% negro y grises oscuros como base. 15% verde jungla y olivo como cuerpo. 5% oro como acento — solo para destacar lo que verdaderamente importa. Nunca colores brillantes ni saturados.</p>
 
     <hr class="divider">
 
